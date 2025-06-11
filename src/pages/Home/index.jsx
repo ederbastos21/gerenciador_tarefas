@@ -25,15 +25,21 @@ const Home = () => {
   const editarTarefa = (id, novoTexto) => {
     setTarefas(prev =>
       prev.map(t =>
-        t.id === id
-          ? { ...t, texto: novoTexto }
-          : t
+        t.id === id ? { ...t, texto: novoTexto } : t
       )
     )
   }
 
   const removerTarefa = (id) => {
     setTarefas(prev => prev.filter(t => t.id !== id))
+  }
+
+  const toggleConcluida = (id) => {
+    setTarefas(prev =>
+      prev.map(t =>
+        t.id === id ? { ...t, concluida: !t.concluida } : t
+      )
+    )
   }
 
   return (
@@ -45,6 +51,7 @@ const Home = () => {
           tarefas={tarefas}
           aoEditar={editarTarefa}
           aoRemover={removerTarefa}
+          aoToggleConcluida={toggleConcluida}
         />
       </main>
     </>

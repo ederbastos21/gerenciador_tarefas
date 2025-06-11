@@ -11,8 +11,7 @@ export const Container = styled.section`
   .item {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
+    gap: 0.5rem;
     padding: 0.5rem;
     border-radius: 4px;
     transition: background-color 0.2s ease;
@@ -21,15 +20,24 @@ export const Container = styled.section`
       background-color: #f0f0f0;
     }
 
-    span {
-      flex: 1;
-      cursor: default;
+    input[type="checkbox"] {
+      width: 1rem;
+      height: 1rem;
+      cursor: pointer;
     }
 
-    input {
+    span, input[type="text"] {
       flex: 1;
-      padding: 0.5rem;
       font-size: 1rem;
+    }
+
+    span.concluida {
+      text-decoration: line-through;
+      color: #777;
+    }
+
+    input[type="text"] {
+      padding: 0.5rem;
       border: 1px solid #ccc;
       border-radius: 4px;
     }

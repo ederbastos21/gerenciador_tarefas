@@ -1,7 +1,12 @@
 import React, { useState } from 'react'
 import { Container } from './styles'
 
-const ListaTarefas = ({ tarefas, aoEditar, aoRemover }) => {
+const ListaTarefas = ({
+  tarefas,
+  aoEditar,
+  aoRemover,
+  aoToggleConcluida
+}) => {
   const [editandoId, setEditandoId] = useState(null)
   const [textoEditado, setTextoEditado] = useState('')
 
@@ -31,6 +36,11 @@ const ListaTarefas = ({ tarefas, aoEditar, aoRemover }) => {
       ) : (
         tarefas.map((tarefa) => (
           <div key={tarefa.id} className="item">
+            <input
+              type="checkbox"
+              checked={tarefa.concluida}
+              onChange={() => aoToggleConcluida(tarefa.id)}
+            />
             {editandoId === tarefa.id ? (
               <input
                 type="text"
@@ -44,11 +54,13 @@ const ListaTarefas = ({ tarefas, aoEditar, aoRemover }) => {
                 autoFocus
               />
             ) : (
-              <span className={tarefa.concluida ? 'concluida' : ''}>
+              <span
+                onClick={() => iniciarEdicao(tarefa)}
+                className={tarefa.concluida ? 'concluida' : ''}
+              >
                 {tarefa.texto}
               </span>
             )}
-
             <div className="botoes">
               <button
                 className="btn-editar"
