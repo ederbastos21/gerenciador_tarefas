@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container } from './styles'
 
-const cabecalho = () => {
+const Cabecalho = () => {
   return (
     <Container>
       <h1>Gerenciador de Tarefas</h1>
