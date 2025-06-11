@@ -1,10 +1,17 @@
 import React from 'react'
+import Cabecalho from '../../components/Cabecalho'
+import FormularioTarefa from '../../components/FormularioTarefa'
+import ListaTarefas from '../../components/ListaTarefas'
 
 const Home = () => {
   return (
-    <main>
-      <h1>Gerenciador de Tarefas</h1>
-    </main>
+    <>
+      <Cabecalho />
+      <main>
+        <FormularioTarefa />
+        <ListaTarefas />
+      </main>
+    </>
   )
 }
 
