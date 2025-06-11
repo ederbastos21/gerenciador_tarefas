@@ -4,20 +4,22 @@ import FormularioTarefa from '../../components/FormularioTarefa';
 import ListaTarefas from '../../components/ListaTarefas';
 
 const Home = () => {
-  // 1) Estado inicial puxa do localStorage de forma preguiçosa
   const [tarefas, setTarefas] = useState(() => {
     const salvo = localStorage.getItem('tarefas');
     return salvo ? JSON.parse(salvo) : [];
   });
 
-  // 2) Grava sempre que 'tarefas' mudar
   useEffect(() => {
     localStorage.setItem('tarefas', JSON.stringify(tarefas));
   }, [tarefas]);
 
   const adicionarTarefa = (novaTarefa) => {
     if (!novaTarefa.trim()) return;
-    setTarefas(prev => [...prev, novaTarefa]);
+    setTarefas(prev => [...prev, { id: Date.now(), texto: novaTarefa, concluida: false }]);
+  };
+
+  const removerTarefa = (id) => {
+    setTarefas(prev => prev.filter(tarefa => tarefa.id !== id));
   };
 
   return (
@@ -25,7 +27,7 @@ const Home = () => {
       <Cabecalho />
       <main>
         <FormularioTarefa aoAdicionar={adicionarTarefa} />
-        <ListaTarefas tarefas={tarefas} />
+        <ListaTarefas tarefas={tarefas} aoRemover={removerTarefa} />
       </main>
     </>
   );
