@@ -1,10 +1,16 @@
 import React from 'react'
 import { Container } from './styles'
 
-const ListaTarefas = () => {
+const ListaTarefas = ({ tarefas }) => {
   return (
     <Container>
-      <p>Nenhuma tarefa adicionada ainda.</p>
+      {tarefas.length === 0 ? (
+        <p>Nenhuma tarefa adicionada ainda.</p>
+      ) : (
+        tarefas.map((tarefa, index) => (
+          <div key={index}>{tarefa}</div>
+        ))
+      )}
     </Container>
   )
 }
