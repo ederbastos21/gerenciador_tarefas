@@ -34,11 +34,11 @@ Um aplicativo web simples de Gerenciador de Tarefas construído com React e Styl
 1. Clone este repositório:
 
    ```bash
-   git clone https://github.com/ederbastos21/Gerenciador_de_atividades.git
+   git clone https://github.com/ederbastos21/gerenciador_tarefas.git
 
    # ou via ssh
    
-    git clone git@github.com:ederbastos21/Gerenciador_de_atividades.git
+   git clone git@github.com:ederbastos21/gerenciador_tarefas.git
 
    ```
 2. Navegue até a pasta do projeto:
